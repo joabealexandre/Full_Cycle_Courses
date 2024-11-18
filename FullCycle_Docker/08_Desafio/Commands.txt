@@ -1,0 +1,10 @@
+node-network
+
+docker run -d --rm --name db \
+-p 3306:3306 \
+    -e MYSQL_ROOT_PASSWORD=root \
+    -e MYSQL_DATABASE=nodedb \
+    --network node-network \
+    -v ./mysql_scripts:/docker-entrypoint-initdb.d \
+    -v ./mysql_data:/var/lib/mysql \
+    mysql:5.7
